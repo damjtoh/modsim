@@ -1,6 +1,7 @@
 # Sistemas dinámicos de orden 1 autonomo
 
-El objetivo de este aplicativo es el de generar un diagrama de fases y su animación partiendo de una función.
+Este aplicativo fue realizado para la materia Modelado y Simulación de la Universidad Argentina de la Empresa.
+El objetivo de este aplicativo es el de generar un diagrama de fases y una animación partiendo de una función y un punto.
 
 ## Herramientas utilizadas
 

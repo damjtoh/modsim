@@ -112,7 +112,7 @@ export default function Home() {
         </div>
         {components.length > 0 && (
           <div>
-            <h3 className="text-center text-xl mt-6">Diagrama de estados</h3>
+            <h3 className="text-center text-xl mt-6">Diagrama de fases</h3>
             <StateDiagram components={components} />
           </div>
         )}
