@@ -20,21 +20,6 @@ const AnimatedPoint: FC<AnimatedPointProps> = ({
     const rawSpeed = math.evaluate(equation, { x: animatedX });
     const speed =
       direction === "LEFT" ? -Math.abs(rawSpeed) : Math.abs(rawSpeed);
-    console.log(
-      "handleAnimateTimeChange",
-      "\ninitialAnimationX: ",
-      initialX,
-      "\nspeed: ",
-      speed,
-      "\nnew x: ",
-      initialX + speed * 0.1 * time,
-      "\ncurrent time: ",
-      time,
-      "\ndirection: ",
-      direction,
-      "\nanimatedX: ",
-      animatedX
-    );
     if (
       (direction === "RIGHT" && initialX + speed * time > animatedX) ||
       (direction === "LEFT" && initialX + speed * time < animatedX)

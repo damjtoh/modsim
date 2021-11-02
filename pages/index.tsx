@@ -36,10 +36,6 @@ export default function Home() {
   const handleEquationChange = (e: ChangeEvent<HTMLInputElement>) =>
     setEquationValue(e.target.value);
 
-  console.log(math);
-  console.log("resultado: ", math.evaluate("2 * x", { x: 2 }));
-  console.log("equationValue: ", equationValue);
-
   const { mutate: calculate, isLoading } = useMutation(
     (eq: string) =>
       axios.post("/api/dynamic", {
@@ -48,7 +44,6 @@ export default function Home() {
       }),
     {
       onSuccess: ({ data }) => {
-        console.log("response: ", data);
         setComponents(data.result);
       },
     }

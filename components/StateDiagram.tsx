@@ -13,14 +13,13 @@ const Y_DOMAIN = [-2, 2];
 const X_DOMAIN = [-5, 5];
 
 const options = {
-  // width,
   height: 250,
   yAxis: { domain: Y_DOMAIN },
   xAxis: { domain: X_DOMAIN },
   grid: true,
   disableZoom: true,
   tip: {
-    xLine: true, // dashed line parallel to y = 0
+    xLine: true,
     renderer: function (x, y, index) {
       return null;
     },
@@ -57,7 +56,6 @@ const StateDiagram: FC<StateDiagramProps> = ({ components = [], equation }) => {
         const newX = instance.meta.xScale(x) - 6;
         const newY = instance.meta.yScale(0) - 6;
         const movement = findRange(ranges, x)?.movement;
-        console.log("movement: ", movement);
         instance.canvas
           .select("#arrow")
           .style("display", null)
@@ -72,19 +70,9 @@ const StateDiagram: FC<StateDiagramProps> = ({ components = [], equation }) => {
 
   const handleClickPress = (e) => {
     e.persist();
-    console.log("just clicked", e);
     if (!isAnimating) setIsAnimating(true);
-    console.log(
-      "mouse: ",
-      d3.pointer(
-        e.nativeEvent,
-        instance.root.select("rect.zoom-and-drag").node()
-      )
-    );
     const [x] = d3.pointer(e.nativeEvent, e.target);
-    console.log("x clicked: ", x, instance.meta.xScale.invert(x));
     const unscaledX = instance.meta.xScale.invert(x);
-    // setAnimatedX(x);
     const range = findRange(ranges, unscaledX);
     setInitialAnimationConfig({
       x: unscaledX,
@@ -93,11 +81,6 @@ const StateDiagram: FC<StateDiagramProps> = ({ components = [], equation }) => {
     });
   };
   const handleAnimationXChange = (x) => {
-    console.log(
-      "changing animation, scaled x: ",
-      x,
-      initialAnimationConfig.limit
-    );
     if (
       instance &&
       x > initialAnimationConfig.limit[0] &&
@@ -120,7 +103,6 @@ const StateDiagram: FC<StateDiagramProps> = ({ components = [], equation }) => {
 
   useEffect(() => {
     if (instance) {
-      console.log("instance or components changed: ", instance, components);
       components.forEach((c) => {
         if (c.type === "EQ_POINT") {
           instance.canvas
@@ -130,7 +112,6 @@ const StateDiagram: FC<StateDiagramProps> = ({ components = [], equation }) => {
             .attr("cy", instance.meta.yScale(0))
             .style("fill", c.subType === "attractor" ? "green" : "red");
         } else if (c.type === "RANGE") {
-          console.log(instance.meta.xScale(-3), instance.meta.yScale(0));
           instance.canvas
             .append("path")
             .attr("id", "arrow")
