@@ -22,4 +22,8 @@ Se utilizaron diversas herramientas de código abierto, se decidió trabajar con
 
 ## Limitaciones
 
-- La biblioteca `algebra.js` cuya última versión fué lanzada en el ano 2015, ha sido deprecada y posee multiples limitantes, entre ellas no poder resolver ecuaciones trigonometricas o cuarticas.
+- La biblioteca `algebra.js` cuya última versión fué lanzada en el año 2015, ha sido deprecada y posee multiples limitantes, entre ellas no poder resolver ecuaciones trigonometricas o cuarticas.
+
+## Demo
+
+Para visualizar el aplicativo en funcionamiento se puede ingresar al siguiente sitio: https://modsim.vercel.app/
