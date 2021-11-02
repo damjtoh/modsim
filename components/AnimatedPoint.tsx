@@ -6,16 +6,18 @@ type AnimatedPointProps = {
   initialX: number;
   direction: "LEFT" | "RIGHT";
   onXChange: (x: number) => void;
+  equation: string;
 };
 
 const AnimatedPoint: FC<AnimatedPointProps> = ({
   initialX,
   direction,
+  equation,
   onXChange,
 }) => {
   const [animatedX, setAnimatedX] = useState(initialX);
   const handleAnimateTimeChange = (time) => {
-    const rawSpeed = math.evaluate("x^2 - 1", { x: animatedX });
+    const rawSpeed = math.evaluate(equation, { x: animatedX });
     const speed =
       direction === "LEFT" ? -Math.abs(rawSpeed) : Math.abs(rawSpeed);
     console.log(

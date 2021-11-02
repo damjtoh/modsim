@@ -6,6 +6,7 @@ import AnimatedPoint from "./AnimatedPoint";
 
 type StateDiagramProps = {
   components: StateDiagramComponent[];
+  equation: string;
 };
 
 const Y_DOMAIN = [-2, 2];
@@ -34,7 +35,7 @@ const options = {
 export const findRange = (ranges, x) =>
   ranges.find((r) => r.range[0] < x && r.range[1] > x);
 
-const StateDiagram: FC<StateDiagramProps> = ({ components = [] }) => {
+const StateDiagram: FC<StateDiagramProps> = ({ components = [], equation }) => {
   const rootEl = useRef(null);
   const { instance } = useFunctionPlot(rootEl, options);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -97,7 +98,6 @@ const StateDiagram: FC<StateDiagramProps> = ({ components = [] }) => {
       x,
       initialAnimationConfig.limit
     );
-    // if (instance && Math.abs(x) > Math.abs(initialAnimationConfig.limit)) {
     if (
       instance &&
       x > initialAnimationConfig.limit[0] &&
@@ -166,6 +166,7 @@ const StateDiagram: FC<StateDiagramProps> = ({ components = [] }) => {
             initialX={initialAnimationConfig.x}
             direction={initialAnimationConfig.direction}
             onXChange={handleAnimationXChange}
+            equation={equation}
           />
           <button
             type="button"

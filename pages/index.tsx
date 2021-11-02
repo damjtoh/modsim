@@ -62,15 +62,15 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
       <Head>
-        <title>Sistemas dinámicos de orden 1 autonomo</title>
+        <title>Sistemas dinámicos de orden 1 autonomos</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Container */}
       <div className="flex flex-col flex-1 justify-around">
         <h1 className="text-2xl text-center">
-          Sistemas dinámicos de orden 1 autonomo
+          Sistemas dinámicos de orden 1 autonomos
         </h1>
-        <div className="generate mt-4 flex flex-row items-center justify-between">
+        <div className="generate mt-2 flex flex-row items-center justify-between">
           <label className="flex flex-row items-center w-full">
             Función
             <input
@@ -81,7 +81,7 @@ export default function Home() {
             />
           </label>
           <button
-            className="w-4/12 py-2 my-4 px-4 ml-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+            className="w-4/12 py-2 my-2 px-4 ml-4 bg-indigo-600 hover:bg-indigo-700 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
             onClick={handleCalculate}
           >
             Calcular
@@ -102,6 +102,7 @@ export default function Home() {
             options={{
               yAxis: { domain: [-2, 8] },
               grid: true,
+              disableZoom: true,
               data: [
                 {
                   fn: equationValue,
@@ -113,12 +114,12 @@ export default function Home() {
         {components.length > 0 && (
           <div>
             <h3 className="text-center text-xl mt-6">Diagrama de fases</h3>
-            <StateDiagram components={components} />
+            <StateDiagram components={components} equation={equationValue} />
           </div>
         )}
       </div>
 
-      <footer className="flex items-center justify-center mt-auto w-full h-12 border-t mt-24">
+      <footer className="flex items-center justify-center mt-auto w-full h-12 border-t">
         Damián Crespi
         <a
           className="flex items-center justify-center ml-2 underline"
